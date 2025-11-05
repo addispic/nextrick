@@ -17,7 +17,7 @@ export default function ToolsSwiper() {
         if (emblaApi) emblaApi.scrollNext();
     }, [emblaApi]);
 
-    const slides = Array.from({ length: 8 }, (_, i) => `Slide ${i + 1}`);
+    const slides = Array.from({ length: 9 }, (_, i) => `Slide ${i + 1}`);
 
     // Group slides 2 per column
     const grouped: string[][] = [];
@@ -26,7 +26,7 @@ export default function ToolsSwiper() {
     }
 
     return (
-        <div className="col-span-7 relative bg-yellow-400">
+        <div className="col-span-7 relative">
             <button onClick={scrollPrev} className="absolute -left-3 top-[8rem] z-50 text-white w-7 aspect-square rounded-full flex items-center justify-center bg-green-500 cursor-pointer">p</button>
             <button onClick={scrollNext} className="absolute right-0 top-[8rem] z-50 text-white w-7 aspect-square rounded-full flex items-center justify-center bg-green-500 cursor-pointer">n</button>
             <div className="embla overflow-hidden pb-64" ref={emblaRef}>
@@ -36,7 +36,7 @@ export default function ToolsSwiper() {
                         const isLastCol = colIndex === grouped.length - 1;
                         return (
                             <div key={colIndex} className="embla__slide flex-none w-64">
-                                <div className="grid grid-rows-2 bg-green-400">
+                                <div className="grid grid-rows-2">
                                     {column.map((slide, rowIndex) => {
                                         const isTopRow = rowIndex === 0;
                                         const isBottomRow = rowIndex === column.length - 1;
