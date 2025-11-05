@@ -1,12 +1,21 @@
 "use client";
 import useEmblaCarousel from "embla-carousel-react";
+import { useCallback } from "react";
 
 export default function ToolsSwiper() {
-    const [emblaRef] = useEmblaCarousel({
+    const [emblaRef, emblaApi] = useEmblaCarousel({
         loop: false,
         containScroll: "trimSnaps",
         dragFree: false,
     });
+
+    const scrollPrev = useCallback(() => {
+        if (emblaApi) emblaApi.scrollPrev();
+    }, [emblaApi]);
+
+    const scrollNext = useCallback(() => {
+        if (emblaApi) emblaApi.scrollNext();
+    }, [emblaApi]);
 
     const slides = Array.from({ length: 8 }, (_, i) => `Slide ${i + 1}`);
 
@@ -17,7 +26,8 @@ export default function ToolsSwiper() {
     }
 
     return (
-        <div className="col-span-7">
+        <div className="col-span-7 relative bg-yellow-400">
+            <button onClick={scrollPrev} className="absolute -left-3 top-[8rem] z-50 text-white w-7 aspect-square rounded-full flex items-center justify-center bg-green-500 cursor-pointer">p</button>
             <div className="embla overflow-hidden pb-64" ref={emblaRef}>
                 {/* Outer frame: only top + left */}
                 <div className="embla__container flex border-t border-l border-neutral-200">
@@ -25,7 +35,7 @@ export default function ToolsSwiper() {
                         const isLastCol = colIndex === grouped.length - 1;
                         return (
                             <div key={colIndex} className="embla__slide flex-none w-64">
-                                <div className="grid grid-rows-2">
+                                <div className="grid grid-rows-2 bg-green-400">
                                     {column.map((slide, rowIndex) => {
                                         const isTopRow = rowIndex === 0;
                                         const isBottomRow = rowIndex === column.length - 1;
@@ -34,18 +44,21 @@ export default function ToolsSwiper() {
                                         return (
                                             <div
                                                 key={rowIndex}
-                                                className={`h-36 flex items-center justify-center bg-white
-                          transition-all duration-300 ease-in-out
-                          shadow-none hover:scale-105 hover:z-10 hover:shadow-2xl hover:bg-red-500
-                          border-neutral-200
-                          border-r border-b
-                          ${isTopRow ? "border-t" : ""}
-                          ${isLastCol ? "border-r" : ""}
-                          ${isBottomRow ? "border-b" : ""}
-                          ${isLastCell ? "border-b border-r" : ""}
+                                                className={`h-36 w-full relative 
+                          
                         `}
                                             >
-                                                {slide}
+                                                <div className={`flex items-center justify-center bg-white
+                          transition-all duration-300 ease-in-out
+                          shadow-none hover:h-56 origin-top hover:z-10 hover:shadow-2xl hover:bg-red-500
+                          border-neutral-200
+                          border-r border-b absolute left-0 top-0 h-36 w-full ${isTopRow ? "border-t" : ""}
+                          ${isLastCol ? "border-r" : ""}
+                          ${isBottomRow ? "border-b" : ""}
+                          ${isLastCell ? "border-b border-r" : ""}`}>
+
+                                                    {slide}
+                                                </div>
                                             </div>
                                         );
                                     })}
