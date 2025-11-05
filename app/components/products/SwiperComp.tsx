@@ -31,13 +31,20 @@ export default function SwiperComp() {
 
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
-                className='border-l border-t border-neutral-200 '
+                className='border-l border-t border-neutral-200 relative '
             >
                 {
                     [1, 2, 3, 4, 5, 6, 7, 8].map((_, i) => (
-                        <SwiperSlide key={i} className='border-b! border-r! border-neutral-200! '>
+                        <SwiperSlide key={i} className='border-b! border-r! border-neutral-200!'>
 
-                            <div className={`w-full h-36  flex items-center justify-center bg-white transition-all hover:scale-110 border border-transparent hover:border-neutral-200 cursor-pointer ease-in-out duration-300 hover:shadow-2xl`}>Slide {i + 1}</div>
+                            <div className="relative overflow-visible w-full h-36 flex items-center justify-center">
+                                <div className="w-full h-full bg-white flex items-center justify-center
+                        transition-transform duration-300 ease-in-out
+                        hover:scale-110 hover:z-50 hover:shadow-2xl
+                        border border-transparent hover:border-neutral-200 cursor-pointer">
+                                    Slide {i + 1}
+                                </div>
+                            </div>
                         </SwiperSlide>
                     ))
                 }

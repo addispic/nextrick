@@ -4,6 +4,7 @@ export default function Home() {
     <div className="w-screen h-screen flex items-center justify-center flex-col">
       <h3>Welcome to Nextrick</h3>
       <Link href={"/products"}>Products</Link>
+      <Link href={"/tools"}>Tools</Link>
     </div>
   );
 }
