@@ -1,0 +1,20 @@
+// components
+import MainImage from "../components/products/MainImage"
+import SwiperComp from "../components/products/SwiperComp"
+export default function Products() {
+    return (
+        <div>
+            <header className="w-screen h-16">
+                <div className="max-w-6xl h-full mx-auto flex items-center justify-between px-3">
+
+                    <button>icon</button>
+                    <p>view all</p>
+                </div>
+            </header>
+            <div className="max-w-6xl h-full mx-auto mt-5 grid grid-cols-12">
+                <MainImage />
+                <SwiperComp />
+            </div>
+        </div>
+    )
+}
