@@ -28,6 +28,7 @@ export default function ToolsSwiper() {
     return (
         <div className="col-span-7 relative bg-yellow-400">
             <button onClick={scrollPrev} className="absolute -left-3 top-[8rem] z-50 text-white w-7 aspect-square rounded-full flex items-center justify-center bg-green-500 cursor-pointer">p</button>
+            <button onClick={scrollNext} className="absolute right-0 top-[8rem] z-50 text-white w-7 aspect-square rounded-full flex items-center justify-center bg-green-500 cursor-pointer">n</button>
             <div className="embla overflow-hidden pb-64" ref={emblaRef}>
                 {/* Outer frame: only top + left */}
                 <div className="embla__container flex border-t border-l border-neutral-200">
