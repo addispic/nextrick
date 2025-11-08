@@ -1,48 +1,49 @@
 @import "tailwindcss";
 
+@import "./styles/inverted-border.css";
+@import "./styles//computers.css";
 
 /* slide */
 .swiper-slide {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* Remove right border on last column */
 .swiper-slide:nth-child(3n) {
-    border-right: none !important;
+  border-right: none !important;
 }
 
 /* Remove bottom border on last row */
 .swiper-wrapper .swiper-slide:nth-last-child(-n + 3) {
-    border-bottom: none !important;
+  border-bottom: none !important;
 }
 
 /* Remove outer Swiper’s internal border overlap */
 .swiper {
-    border-collapse: collapse;
-    border-style: solid;
+  border-collapse: collapse;
+  border-style: solid;
 }
 
 /* Remove double border where Swiper and slides meet */
-.swiper>.swiper-wrapper {
-    margin-bottom: -1px;
-    /* prevents double-thick bottom */
-    margin-right: -1px;
-    /* prevents double-thick right edge */
+.swiper > .swiper-wrapper {
+  margin-bottom: -1px;
+  /* prevents double-thick bottom */
+  margin-right: -1px;
+  /* prevents double-thick right edge */
 }
 
 /* customs */
 .custom-pagination .swiper-pagination-bullet {
-    width: .5rem;
-    height: .5rem;
-    background-color: rgba(255, 68, 0, 0.6);
-    opacity: .7;
-    transform: scale(.5);
-    border-radius: 50%;
-    transition: all 0.3s;
-
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: rgba(255, 68, 0, 0.6);
+  opacity: 0.7;
+  transform: scale(0.5);
+  border-radius: 50%;
+  transition: all 0.3s;
 }
 
 .custom-pagination .swiper-pagination-bullet-active {
-    transform: scale(1.5);
-    opacity: 1;
+  transform: scale(1.5);
+  opacity: 1;
 }
